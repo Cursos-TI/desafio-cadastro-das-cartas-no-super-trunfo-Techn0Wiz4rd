@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países (Nível Novato)
+// Desafio Super Trunfo - Países (Nível Aventureiro)
 
 
 
