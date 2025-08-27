@@ -2,6 +2,8 @@
 
 // Desafio Super Trunfo - Países (Nível Novato)
 
+
+
 int main() {
 
     //***DECLARAÇÃO DE VARIÁVEIS***
@@ -17,6 +19,7 @@ int main() {
     //Variáveis de área e PIB da primeira cidade.
     float area1, PIB1; 
     
+    
 
 
 
@@ -28,6 +31,10 @@ int main() {
     int populacao2, pontosTuristicos2; 
     //Variáveis de área e PIB da segunda cidade
     float area2, PIB2; 
+
+    
+    
+    
     
 
 
@@ -155,6 +162,19 @@ int main() {
     printf("Qual o número de pontos turísticos totais em %s?\n\nNúmero de pontos turísticos: ", nomeCidade2);
     //coleta e atribui o valor informado à variável pontosTuristicos2.
     scanf(" %d", &pontosTuristicos2);
+
+
+    //DENSIDADE POPULACIONAL E PIB PER CAPITA DAS DUAS CARTAS
+
+    //Variável de densidade populacional da primeira cidade
+    float DenPopulacional1 = (float) populacao1 / area1;
+    //Variável de PIB per capita da primeira cidade
+    float PIBPerCapita1 = (PIB1 * 1000000000) / (float) populacao1;
+
+    //Variável de densidade populacional da segunda cidade
+    float DenPopulacional2 = (float) populacao2 / area2;
+    //Variável de PIB per capita da segunda cidade
+    float PIBPerCapita2 = (PIB2 * 1000000000) / ((float) populacao2);
     
 
 
@@ -170,7 +190,7 @@ int main() {
 
 
     //Exibição das informações da primeira cidade.
-    printf("\n\nEstado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %f KM²\nPIB: %f Bilhões de Reais\nNúmero de pontos turísticos: %d", estadoCidade1, codigoCidade1, nomeCidade1, populacao1, area1, PIB1, pontosTuristicos1);
+    printf("\n\nEstado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %.2f KM²\nPIB: %.2f Bilhões de Reais\nNúmero de pontos turísticos: %d\nDensidade populacional: %.2f habitantes/KM²\nPIB per capita: R$ %.2f", estadoCidade1, codigoCidade1, nomeCidade1, populacao1, area1, PIB1, pontosTuristicos1, DenPopulacional1, PIBPerCapita1);
     
 
 
@@ -182,7 +202,7 @@ int main() {
 
 
     //Exibição das informações da segunda cidade.
-    printf("Estado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %f KM²\nPIB: %f Bilhões de Reais\nNúmero de pontos turísticos: %d\n\n", estadoCidade2, codigoCidade2, nomeCidade2, populacao2, area2, PIB2, pontosTuristicos2);
+    printf("Estado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %.2f KM²\nPIB: %.2f Bilhões de Reais\nNúmero de pontos turísticos: %d\nDensidade populacional: %.2f habitantes/KM²\nPIB per capita: R$ %.2f\n", estadoCidade2, codigoCidade2, nomeCidade2, populacao2, area2, PIB2, pontosTuristicos2, DenPopulacional2, PIBPerCapita2);
 
 
     return 0;
