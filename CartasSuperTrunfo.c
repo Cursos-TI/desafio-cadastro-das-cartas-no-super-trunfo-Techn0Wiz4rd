@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países (Nível Aventureiro)
+// Desafio Super Trunfo - Países (Nível Mestre) - Tema 2
 
 
 
@@ -203,6 +203,69 @@ int main() {
 
     //Exibição das informações da segunda cidade.
     printf("Estado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %.2f KM²\nPIB: %.2f Bilhões de Reais\nNúmero de pontos turísticos: %d\nDensidade populacional: %.2f habitantes/KM²\nPIB per capita: R$ %.2f\n", estadoCidade2, codigoCidade2, nomeCidade2, populacao2, area2, PIB2, pontosTuristicos2, DenPopulacional2, PIBPerCapita2);
+
+
+    //BLOCO DE VARIÁVEIS DE COMPARAÇÃO DE ATRIBUTOS ENTRE AS CARTAS
+
+
+    //Comparador de população.
+    int compPopulacao = populacao1 > populacao2;
+    //Comparador de área.
+    float compArea = area1 > area2;
+    //Comparador de PIB.
+    float compPIB = PIB1 > PIB2;
+    //Comparador de pontos turísticos (número total).
+    int compPontosTuristicos = pontosTuristicos1 > pontosTuristicos2;
+    //Comparador de densidade populacional.
+    float compDenPopulacional = DenPopulacional1 < DenPopulacional2;
+    //Comparador de PIB per capita.
+    float compPIBPerCapita = PIBPerCapita1 > PIBPerCapita2;
+    //Cálculo do Super Poder da primeira cidade.
+    float superPoder1 = (float) populacao1 + area1 + PIB1 + (float) pontosTuristicos1 + PIBPerCapita1 + (1 / DenPopulacional1);
+    //Cálculo do Super Poder da segunda cidade.
+    float superPoder2 = (float) populacao2 + area2 + PIB2 + (float) pontosTuristicos2 + PIBPerCapita2 + (1 / DenPopulacional2);
+    //Comparador de Super Poder.
+    float compSuperPoder = superPoder1 > superPoder2;
+
+
+
+
+    //printf para debug dos valores de superpoder; (linha desativada)
+    //printf("\n\n\n\nSuperPoderes: o poder de %s é %f\nO poder de %s é %f\n\n", nomeCidade1, superPoder1, nomeCidade2, superPoder2);
+    
+    //BLOCO DE IMPRESSÃO DAS INFORMAÇÕES DE COMPARAÇÃO
+
+
+    //Descrição.
+    printf("\n\nA seguir, um comparativo entre suas cidades %s e %s.\n\nCaso o valor no campo seja '1', significa que %s ganhou!\n\nCaso seja '0', significa que %s ganhou!\n\n", nomeCidade1, nomeCidade2, nomeCidade1, nomeCidade2);
+
+
+    //Exibição dos resultados:
+
+
+
+
+    //Resultado da comparação de POPULAÇÃO.
+    printf("A vencedora em 'População' é: %d\n", compPopulacao);
+    
+    //Resultado da comparação de ÁREA.
+    printf("A vencedora em 'Área' é: %d\n", (int) compArea);
+
+    //Resultado da comparação de PIB.
+    printf("A vendedora em 'PIB' é: %d\n", (int) compPIB);
+
+    //Resultado da comparação de PONTOS TURÍSTICOS.
+    printf("A vendedora em 'Pontos Turísticos' é: %d\n", compPontosTuristicos);
+
+    //Resultado da comparação de DENSIDADE POPULACIONAL.
+    printf("A vendedora em 'Densidade Populacional' é: %d\n", (int) compDenPopulacional);
+
+    //Resultado da comparação de PIB PER CAPITA.
+    printf("A vendedora em 'PIB per Capita' é: %d\n", (int) compPIBPerCapita);
+
+    //Resultado da comparação de SUPER PODER.
+    printf("A vendedora em 'Super Poder' é: %d\n", (int) compSuperPoder);
+    
 
 
     return 0;
