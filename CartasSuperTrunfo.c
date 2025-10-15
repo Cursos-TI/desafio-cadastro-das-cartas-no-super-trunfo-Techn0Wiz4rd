@@ -1,9 +1,131 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países (Nível Mestre) - Tema 2
+
+// Desafio Super Trunfo - Países (Nível inciante) - Tema 3
+
+//Função para comparar 2 atributos. O parâmetro "compTipo" assinala o tipo de comparação.
+int comparador(float atributoCaUm, float atributoCaDois, int compTipo) {
+
+        //conversão dos atributos, caso sejam do tipo Int e não float.
+        if (compTipo == 0 || compTipo == 2) 
+            {
+                atributoCaUm = (int) atributoCaUm;
+                atributoCaDois = (int) atributoCaDois;
+            }
+        //variável que armazenará o resultado a ser retornado
+        int resultado;
+        //Verificando se está sendo calculada a densidade populacional, representada pelo compTipo = 1
+        if (compTipo == 1) 
+            {
+                if (atributoCaUm < atributoCaDois) 
+                    {
+                        //atribui vitória a carta 1
+                        resultado = 1;
+                    } 
+                else if (atributoCaUm > atributoCaDois) 
+                    {
+                        //atribui vitória a carta 2
+                        resultado = 2;
+                    } 
+                else 
+                    {
+                        //indica um empate entre as cartas 1 e 2
+                        resultado = 0;
+                    }
+            } 
+        //Verificando e calculando atributos numérios (exceto densidade populacional).
+        else
+            {
+                if (atributoCaUm < atributoCaDois) 
+                    {
+                        //vitória da segunda carta
+                        resultado = 2;
+                    }
+                else if (atributoCaUm > atributoCaDois) 
+                    {
+                        //vitória da primeira carta
+                        resultado = 1;
+                    } 
+                else 
+                    {
+                        //empate entre as duas cartas
+                        resultado = 0;
+                    }
+        };
+
+        if (compTipo == 0 || compTipo == 2) 
+            {
+                //Conversão do resultado para Int pois os valores de compTip iguais a 0 e 2 são do tipo Int e não float.
+                resultado = (int) resultado;
+                //Retornando o resultado para a variável que chamou a função.
+                return resultado;
+            } 
+        else 
+            {   
+                //Apenas restorna o resultado para a variável que chamou a função, sem sonversões.
+                return resultado;
+            }
+
+        
+    };
 
 
+int exibirComparacao(char cartaUm[1000], char cartaDois[1000], float atributoCartaUm, float atributoCartaDois, int tipoAtributo, char atributoNome[1000]) {
+    //Variável que chama  a função de comparação de 2 atributos e, depois, armazena o resultado. 1 = Carta 1 vence, 2 = Carta 2 vence e 0 = Empate
+    int resultadoComparacao = comparador(atributoCartaUm, atributoCartaDois, tipoAtributo);
+    //char atributoNome;
+    float exibirAtributoUm = atributoCartaUm;
+    float exibirAtributoDois = atributoCartaDois;
+    
+    //Determinar o nome e tipo de atributo sendo exibido!
+    /* if (tipoAtributo == 0) 
+        {
+            atributoNome = "População";
+            exibirAtributoUm = (int) atributoCartaUm;
+            exibirAtributoDois = (int) atributoCartaDois;
+        } 
+    else if (tipoAtributo == 1) 
+        {
+            atributoNome = "Densidade demgráfica";
+        } 
+    else if (tipoAtributo == 2) 
+        {
+        atributoNome = "Número de pontos turísticos";
+        exibirAtributoUm = (int) atributoCartaUm;
+        exibirAtributoDois = (int) atributoCartaDois;
+        } 
+    else if (tipoAtributo == 3)
+        {
+            atributoNome = "PIB";
+        }    
+    else if (tipoAtributo == 4)
+        {
+            atributoNome = "Área";
+        } */
 
+    //Exibição da comparação de um atributo específico
+    printf("Comparando as duas cidades:\n\n");
+    printf("\natributo sendo comparado: %s\n\n\n", atributoNome);
+    if (tipoAtributo == 0 || tipoAtributo == 2)
+        {
+            printf("%s: %d\tVS\t%s: %d", cartaUm, (int) atributoCartaUm, cartaDois, (int) atributoCartaDois);
+        } 
+    else 
+        {
+            printf("%s: %.2f\tVS\t%s: %.2f", cartaUm, atributoCartaUm, cartaDois, atributoCartaDois);
+        }
+    
+    //Determinação do resultado conforme o valor retornado pela função comparador, armazenada na variavel resultadoComparacao.
+    if (resultadoComparacao == 1) {
+        printf("\n\nA carta 1 (%s) venceu!\n", cartaUm);
+    } else if (resultadoComparacao == 2) {
+        printf("\n\nA carta 2 (%s) venceu!\n", cartaDois);
+    } else {
+        printf("\n\nAs cidades %s e %s estão empatadas!\n", cartaUm, cartaDois);
+    }
+};    
+
+//Código principal
 int main() {
 
     //***DECLARAÇÃO DE VARIÁVEIS***
@@ -227,8 +349,59 @@ int main() {
     //Comparador de Super Poder.
     float compSuperPoder = superPoder1 > superPoder2;
 
+    
+    int saidaDoPrograma = 0;
 
+    
+    
 
+    do 
+        {   
+            int opcaoComparacao;
+            printf("\n\n\n\t***MENU DE COMPARAÇÃO***\n\n\n");
+            printf("Vamos comparar suas cidades: %s e %s!\nInsira abaixo o número que corresponde ao tipo de comparação que você deseja realizar!\n\n", nomeCidade1, nomeCidade2);
+            printf("1. População\n");
+            printf("2. Densidade demográfica\n");
+            printf("3. Número de pontos turísticos\n");
+            printf("4. PIB\n");
+            printf("5. Área\n");
+            printf("6. Sair do programa\n");
+            printf("Opção: ");
+
+            scanf("%d", &opcaoComparacao);
+            
+            switch (opcaoComparacao) 
+                {
+                    case 1:
+                        char popExibir[1000] = "População";
+                        exibirComparacao(nomeCidade1, nomeCidade2, populacao1, populacao2, 0, popExibir);
+                    break;
+                    case 2:
+                        char DensDemoExibir[1000] = "Densidade demográfica";
+                        exibirComparacao(nomeCidade1, nomeCidade2, DenPopulacional1, DenPopulacional2, 1, DensDemoExibir);
+                    break;
+                    case 3:
+                        char PontosTuristicosExibir[1000] = "Pontos turísticos";
+                        exibirComparacao(nomeCidade1, nomeCidade2, pontosTuristicos1, pontosTuristicos2, 2, PontosTuristicosExibir);
+                    break;
+                    case 4:
+                        char PibExibir[1000] =  "PIB";
+                        exibirComparacao(nomeCidade1, nomeCidade2, PIB1, PIB2, 3, PibExibir);
+                    break;
+                    case 5:
+                        char AreaExibir[1000] = "Área";
+                        exibirComparacao(nomeCidade1, nomeCidade2, area1, area2, 4, AreaExibir);
+                    break;
+                    case 6:
+                        saidaDoPrograma = 1;
+                    break;
+                    default:
+                        printf("Opção inválida!");
+                    break;
+                }
+        } 
+    
+    while (saidaDoPrograma == 0);
 
     //printf para debug dos valores de superpoder; (linha desativada)
     //printf("\n\n\n\nSuperPoderes: o poder de %s é %f\nO poder de %s é %f\n\n", nomeCidade1, superPoder1, nomeCidade2, superPoder2);
@@ -236,37 +409,7 @@ int main() {
     //BLOCO DE IMPRESSÃO DAS INFORMAÇÕES DE COMPARAÇÃO
 
 
-    //Descrição.
-    printf("\n\nA seguir, um comparativo entre suas cidades %s e %s.\n\nCaso o valor no campo seja '1', significa que %s ganhou!\n\nCaso seja '0', significa que %s ganhou!\n\n", nomeCidade1, nomeCidade2, nomeCidade1, nomeCidade2);
-
-
-    //Exibição dos resultados:
-
-
-
-
-    //Resultado da comparação de POPULAÇÃO.
-    printf("A vencedora em 'População' é: %d\n", compPopulacao);
     
-    //Resultado da comparação de ÁREA.
-    printf("A vencedora em 'Área' é: %d\n", (int) compArea);
-
-    //Resultado da comparação de PIB.
-    printf("A vendedora em 'PIB' é: %d\n", (int) compPIB);
-
-    //Resultado da comparação de PONTOS TURÍSTICOS.
-    printf("A vendedora em 'Pontos Turísticos' é: %d\n", compPontosTuristicos);
-
-    //Resultado da comparação de DENSIDADE POPULACIONAL.
-    printf("A vendedora em 'Densidade Populacional' é: %d\n", (int) compDenPopulacional);
-
-    //Resultado da comparação de PIB PER CAPITA.
-    printf("A vendedora em 'PIB per Capita' é: %d\n", (int) compPIBPerCapita);
-
-    //Resultado da comparação de SUPER PODER.
-    printf("A vendedora em 'Super Poder' é: %d\n", (int) compSuperPoder);
-    
-
 
     return 0;
 }
