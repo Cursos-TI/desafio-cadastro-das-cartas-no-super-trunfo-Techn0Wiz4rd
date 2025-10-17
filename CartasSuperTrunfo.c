@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 
-// Desafio Super Trunfo - Países (Nível inciante) - Tema 3
+// Desafio Super Trunfo - Países (Nível Mestre) - Tema 3
 
 /*Função para comparar 2 atributos. O parâmetro "compTipo" assinala o tipo de comparação, podendo ser também utilizado para inverter a lógica para, por exemplo
 o valor de densidade demográfica, cujo menor vence, e não o maior.
